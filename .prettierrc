@@ -1,0 +1,25 @@
+{
+	"bracketSpacing": true,
+	"jsxBracketSameLine": false,
+	"semi": false,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"useTabs": true,
+	"printWidth": 120,
+	"overrides": [
+		{
+			"files": "*.md",
+			"options": {
+				"useTabs": false,
+				"trailingComma": "none"
+			}
+		},
+		{
+			"files": "*.json",
+			"options": {
+				"useTabs": false,
+				"tabWidth": 2
+			}
+		}
+	]
+}
