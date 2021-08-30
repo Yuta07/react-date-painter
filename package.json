@@ -4,6 +4,10 @@
   "repository": "git@github.com:Yuta07/react-date-painter.git",
   "author": "yutaka.miyazaki <mono.12dev@gmail.com>",
   "license": "MIT",
+  "workspaces": [
+    "example",
+    "react-date-painter"
+  ],
   "scripts": {
     "lint": "eslint '{react-date-painter, example}/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --fix '{react-date-painter, example}/**/*.{js,jsx,ts,tsx}'",
