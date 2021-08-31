@@ -1,16 +1,12 @@
-import { ComponentPropsWithRef, forwardRef } from 'react'
+import React from 'react'
 import './index.css'
 
-type BaseProps = ComponentPropsWithRef<'button'>
-
-interface ButtonProps extends BaseProps {
-	loading?: boolean
-}
-
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ children, className, loading, ...props }, ref) => {
-	return (
-		<button {...props} ref={ref} className="button">
-			{children}
-		</button>
-	)
-})
+export const Button = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<'button'>>(
+	({ children, className, ...props }, ref) => {
+		return (
+			<button {...props} ref={ref} className="button">
+				{children}
+			</button>
+		)
+	}
+)
