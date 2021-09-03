@@ -8,3 +8,11 @@ export function updateWeekStart(weekStart: 's' | 'm' = 's') {
 
 	dayjs.updateLocale('en', { weekStart: weekDay })
 }
+
+export function extractDayOfWeekList(weekStart: 's' | 'm') {
+	if ((weekStart = 's')) {
+		return ['日', '月', '火', '水', '木', '金', '土']
+	} else {
+		return ['月', '火', '水', '木', '金', '土', '日']
+	}
+}

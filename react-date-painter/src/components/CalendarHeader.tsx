@@ -9,18 +9,20 @@ export interface CalendarHeaderProps {
 	handleNextClick: () => void
 }
 
-export const CalendarHeader = ({ format, currentMonth, handlePreviousClick, handleNextClick }: CalendarHeaderProps) => {
-	return (
-		<div className="calendar-header">
-			<div className="calendar-header-arrow">
-				<button className="arrow-button pre-button" onClick={handlePreviousClick}>
-					<img src={Arrow} alt="previous-button" className="previous-arrow" />
-				</button>
-				<button className="arrow-button next-button" onClick={handleNextClick}>
-					<img src={Arrow} alt="next-button" className="next-arrow" />
-				</button>
+export const CalendarHeader = React.memo(
+	({ format, currentMonth, handlePreviousClick, handleNextClick }: CalendarHeaderProps) => {
+		return (
+			<div className="calendar-header">
+				<div className="calendar-header-arrow">
+					<button className="arrow-button pre-button" onClick={handlePreviousClick}>
+						<img src={Arrow} alt="previous-button" className="previous-arrow" />
+					</button>
+					<button className="arrow-button next-button" onClick={handleNextClick}>
+						<img src={Arrow} alt="next-button" className="next-arrow" />
+					</button>
+				</div>
+				<span className="current-month">{dayjs(currentMonth).format(format)}</span>
 			</div>
-			<span className="current-month">{dayjs(currentMonth).format(format)}</span>
-		</div>
-	)
-}
+		)
+	}
+)

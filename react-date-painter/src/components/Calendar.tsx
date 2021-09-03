@@ -1,6 +1,7 @@
-import React, { forwardRef, useCallback, useEffect, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useState } from 'react'
 import dayjs from 'dayjs'
 import { CalendarBody } from './CalendarBody'
+import { CalendarDayOfWeek } from './CalendarDayOfWeek'
 import { CalendarHeader } from './CalendarHeader'
 import { updateWeekStart } from '../utils/calendarHelper'
 
@@ -12,7 +13,7 @@ export interface ReactDatePainter {
 	format?: string
 	weekStart?: 's' | 'm'
 	selectedDates: Date[]
-	uniqueHoliday?: Date[]
+	uniqueHoliday?: string[]
 	handleDateClick?: (date?: string) => void
 }
 
@@ -22,7 +23,7 @@ export const Calendar = forwardRef<HTMLDivElement, ReactDatePainter>(
 
 		useEffect(() => {
 			updateWeekStart(weekStart)
-		}, [])
+		}, [weekStart])
 
 		const handlePreviousClick = useCallback(() => {
 			const value = dayjs(currentMonth).subtract(1, 'month').toDate()
@@ -46,6 +47,7 @@ export const Calendar = forwardRef<HTMLDivElement, ReactDatePainter>(
 					handlePreviousClick={handlePreviousClick}
 					handleNextClick={handleNextClick}
 				/>
+				<CalendarDayOfWeek weekStart={weekStart} />
 				<CalendarBody
 					currentMonth={currentMonth}
 					selectedDates={selectedDates}
