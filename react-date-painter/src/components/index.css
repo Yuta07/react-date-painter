@@ -1,0 +1,53 @@
+/* calendar root */
+.calendar-root {
+	min-width: 240px;
+	display: inline-flex;
+	flex-direction: column;
+	padding: 16px;
+	border-radius: 8px;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* calendar header*/
+.calendar-header {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.calendar-header-arrow {
+	display: flex;
+}
+
+.arrow-button {
+	display: inline-flex;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.arrow-button:hover {
+	opacity: 0.7;
+	transition: 0.3s;
+}
+
+.previous-arrow,
+.next-arrow {
+	width: 24px;
+	height: 24px;
+}
+
+.previous-arrow {
+	transform: rotate(180deg);
+}
+
+.next-arrow {
+	margin-left: 4px;
+}
+
+.current-month {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+/* calendar body */
