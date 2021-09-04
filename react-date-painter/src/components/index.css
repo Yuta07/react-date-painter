@@ -1,5 +1,11 @@
+/* date painter picker */
+.date-painter-picker-root {
+	position: absolute;
+	z-index: 50;
+}
+
 /* calendar root */
-.calendar-root {
+.date-painter-root {
 	min-width: 240px;
 	width: 280px;
 	display: inline-flex;
@@ -116,4 +122,10 @@
 
 .holiday {
 	border-bottom: 3px solid #ec7f66;
+}
+
+.selected {
+	border-radius: 50%;
+	color: #ffffff;
+	background: #89d2f7;
 }

@@ -1,4 +1,4 @@
-import { Calendar } from './Calendar'
+export { DatePainter } from './DatePainter'
+export type { ReactDatePainter } from './DatePainter'
 
-export default Calendar
-export type { ReactDatePainter } from './Calendar'
+export { DatePainterPicker } from './DatePainterPicker'
