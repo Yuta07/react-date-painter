@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import './calendar.css'
@@ -15,6 +15,22 @@ export default {
 
 const CalendarTemplate: ComponentStory<typeof DatePainter> = (args) => <DatePainter {...args} />
 
+const SelectedCalendarTemplate: ComponentStory<typeof DatePainter> = (args) => {
+	const [selectedDates, setSelectedDates] = useState(args.selectedDates)
+
+	const handleSelectDates = useCallback((dates: Date[]) => {
+		setSelectedDates(dates)
+	}, [])
+
+	return (
+		<DatePainter
+			selectedDates={selectedDates}
+			uniqueHoliday={args.uniqueHoliday}
+			handleSelectDates={handleSelectDates}
+		/>
+	)
+}
+
 const DatePickerTemplate: ComponentStory<typeof DatePainter> = (args) => {
 	const [state, setState] = useState(false)
 	const [selectedDates, setSelectedDates] = useState(args.selectedDates)
@@ -23,7 +39,9 @@ const DatePickerTemplate: ComponentStory<typeof DatePainter> = (args) => {
 		setState((prev) => !prev)
 	}
 
-	console.log(selectedDates)
+	const handleSelectDates = useCallback((dates: Date[]) => {
+		setSelectedDates(dates)
+	}, [])
 
 	return (
 		<>
@@ -36,7 +54,11 @@ const DatePickerTemplate: ComponentStory<typeof DatePainter> = (args) => {
 				<>
 					<div className="overlay" onClick={handleClick} />
 					<DatePainterPicker targetId="picker-base-point">
-						<DatePainter {...args} />
+						<DatePainter
+							selectedDates={selectedDates}
+							uniqueHoliday={args.uniqueHoliday}
+							handleSelectDates={handleSelectDates}
+						/>
 					</DatePainterPicker>
 				</>
 			)}
@@ -44,8 +66,19 @@ const DatePickerTemplate: ComponentStory<typeof DatePainter> = (args) => {
 	)
 }
 
-export const Calendar = CalendarTemplate.bind({})
-Calendar.args = {
+export const OnlyCalendar = CalendarTemplate.bind({})
+OnlyCalendar.args = {
+	selectedDates: [],
+}
+
+export const NoSelectedCalendar = CalendarTemplate.bind({})
+NoSelectedCalendar.args = {
+	selectedDates: [],
+	uniqueHoliday: ['2021-09-20', '2021-09-23', '2021-11-03', '2021-11-23'],
+}
+
+export const SelectedCalendar = SelectedCalendarTemplate.bind({})
+SelectedCalendar.args = {
 	selectedDates: [],
 	uniqueHoliday: ['2021-09-20', '2021-09-23', '2021-11-03', '2021-11-23'],
 }

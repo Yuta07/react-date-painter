@@ -53,11 +53,11 @@ export interface ReactDatePainter {
 	weekStart?: 's' | 'm'
 	selectedDates: Date[]
 	uniqueHoliday?: string[]
-	handleSelectDate?: (dates: Date[]) => void
+	handleSelectDates?: (dates: Date[]) => void
 }
 
 export const DatePainter = forwardRef<HTMLDivElement, ReactDatePainter>(
-	({ format = 'MMMM YYYY', weekStart = 's', selectedDates, uniqueHoliday = [], handleSelectDate }, ref) => {
+	({ format = 'MMMM YYYY', weekStart = 's', selectedDates, uniqueHoliday = [], handleSelectDates }, ref) => {
 		const [currentMonth, setCurrentMonth] = useState<Date>(now)
 
 		const [state, dispatch] = useReducer(painterReducer, { selectedDates: selectedDates })
@@ -67,8 +67,8 @@ export const DatePainter = forwardRef<HTMLDivElement, ReactDatePainter>(
 		}, [weekStart])
 
 		useEffect(() => {
-			handleSelectDate && console.log(state.selectedDates)
-		}, [state.selectedDates, handleSelectDate])
+			handleSelectDates && handleSelectDates(state.selectedDates)
+		}, [state.selectedDates, handleSelectDates])
 
 		const handlePreviousClick = useCallback(() => {
 			const value = dayjs(currentMonth).subtract(1, 'month').toDate()
@@ -82,16 +82,16 @@ export const DatePainter = forwardRef<HTMLDivElement, ReactDatePainter>(
 
 		const handleSelectDatePainter = useCallback(
 			(date: Date) => {
-				handleSelectDate && dispatch({ type: 'SELECTED_DATE', payload: date })
+				handleSelectDates && dispatch({ type: 'SELECTED_DATE', payload: date })
 			},
-			[dispatch, handleSelectDate]
+			[dispatch]
 		)
 
 		const handleRemoveDatePainter = useCallback(
 			(date: Date) => {
-				handleSelectDate && dispatch({ type: 'REMOVE_DATE', payload: date })
+				handleSelectDates && dispatch({ type: 'REMOVE_DATE', payload: date })
 			},
-			[dispatch, handleSelectDate]
+			[dispatch]
 		)
 
 		return (
