@@ -14,11 +14,11 @@ export interface ReactDatePainter {
 	weekStart?: 's' | 'm'
 	selectedDates: Date[]
 	uniqueHoliday?: string[]
-	handleDateClick?: (date?: string) => void
+	handleDateClick?: (date: Date) => void
 }
 
 export const Calendar = forwardRef<HTMLDivElement, ReactDatePainter>(
-	({ format = 'MMMM YYYY', weekStart = 's', selectedDates, uniqueHoliday, handleDateClick }, ref) => {
+	({ format = 'MMMM YYYY', weekStart = 's', selectedDates, uniqueHoliday = [], handleDateClick }, ref) => {
 		const [currentMonth, setCurrentMonth] = useState<Date>(now)
 
 		useEffect(() => {
@@ -35,9 +35,12 @@ export const Calendar = forwardRef<HTMLDivElement, ReactDatePainter>(
 			setCurrentMonth(value)
 		}, [currentMonth])
 
-		const handleDatePainter = useCallback(() => {
-			handleDateClick && handleDateClick('')
-		}, [handleDateClick])
+		const handleDatePainter = useCallback(
+			(date: Date) => {
+				handleDateClick && handleDateClick(date)
+			},
+			[handleDateClick]
+		)
 
 		return (
 			<div className="calendar-root" ref={ref}>

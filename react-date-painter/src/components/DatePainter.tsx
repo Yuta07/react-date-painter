@@ -1,4 +1,4 @@
-export const DatePainter = () => {
+export const DatePainter = (): JSX.Element => {
 	return (
 		<div>
 			<p>date painter</p>

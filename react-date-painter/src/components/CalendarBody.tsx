@@ -1,19 +1,46 @@
 import React from 'react'
 import dayjs from 'dayjs'
+import { createCurrentMonthCalendar } from '../utils/createCurrentMonthCalendar'
 
-const today = dayjs()
+const today = dayjs().startOf('day').toDate()
 
 export interface CalendarBody {
 	currentMonth: Date
 	selectedDates: Date[]
-	uniqueHoliday?: string[]
-	handleDatePainter: (date?: string) => void
+	uniqueHoliday: string[]
+	handleDatePainter: (date: Date) => void
 }
 
-export const CalendarBody = ({ currentMonth, selectedDates, uniqueHoliday, handleDatePainter }: CalendarBody) => {
-	return (
-		<div className="calendar-body">
-			<p>body</p>
-		</div>
-	)
-}
+export const CalendarBody = React.memo(
+	({ currentMonth, selectedDates, uniqueHoliday, handleDatePainter }: CalendarBody) => {
+		const { calendarArray, restArrayIndex } = createCurrentMonthCalendar(currentMonth)
+
+		console.log(selectedDates)
+
+		return (
+			<div className="calendar-body">
+				{calendarArray.map((date, i) => {
+					const day = dayjs(date).format('D')
+
+					const diffMonthClassName = restArrayIndex.indexOf(i) !== -1 ? 'diff-month' : ''
+					const saturdayClassName = restArrayIndex.indexOf(i) === -1 && (i === 6 || (i + 1) % 7 === 0) ? 'saturday' : ''
+					const sundayClassName = restArrayIndex.indexOf(i) === -1 && (i === 0 || i % 7 === 0) ? 'sunday' : ''
+					const todayClassName = dayjs(date).isSame(today) ? 'today' : ''
+					const holidayClassName = uniqueHoliday.indexOf(dayjs(date).format('YYYY-MM-DD')) !== -1 ? 'holiday' : ''
+
+					return (
+						<p key={date.toString()} className="date-rect-pack">
+							<button className="date-button" onClick={() => handleDatePainter(date)}>
+								<span
+									className={`date-txt ${diffMonthClassName} ${saturdayClassName} ${sundayClassName} ${todayClassName} ${holidayClassName}`}
+								>
+									{day}
+								</span>
+							</button>
+						</p>
+					)
+				})}
+			</div>
+		)
+	}
+)
