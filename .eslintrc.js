@@ -23,7 +23,11 @@ module.exports = {
 		'prettier',
 	],
 	plugins: ['prettier', 'react'],
-	rules: {},
+	rules: {
+		'react/display-name': 'off',
+		'react/prop-types': 'off',
+		'react/react-in-jsx-scope': 'off',
+	},
 	settings: {
 		react: {
 			version: 'detect', // detect the version of React to use
