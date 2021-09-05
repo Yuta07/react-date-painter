@@ -1,6 +1,9 @@
 import dayjs from 'dayjs'
 
-export function createCurrentMonthCalendar(currentMonth: Date) {
+export function createCurrentMonthCalendar(currentMonth: Date): {
+	calendarArray: Date[]
+	restArrayIndex: (number | undefined)[]
+} {
 	const currentMonthStart = dayjs(currentMonth).startOf('month')
 	const currentMonthEnd = dayjs(currentMonth).endOf('month')
 

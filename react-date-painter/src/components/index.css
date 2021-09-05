@@ -67,7 +67,7 @@
 }
 
 .day-week-txt {
-	color: #666666;
+	color: #a1a1a1;
 }
 
 /* calendar body */
@@ -121,7 +121,17 @@
 }
 
 .holiday {
-	border-bottom: 3px solid #ec7f66;
+	position: relative;
+}
+
+.holiday::before {
+	content: '';
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background: #ec7f66;
 }
 
 .selected {

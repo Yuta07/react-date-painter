@@ -1,12 +1,8 @@
 import React from 'react'
 import { extractDayOfWeekList } from '../utils/calendarHelper'
 
-interface CalendarDayWeekProps {
-	weekStart: 's' | 'm'
-}
-
-export const CalendarDayOfWeek = React.memo(({ weekStart }: CalendarDayWeekProps) => {
-	const dayOfWeekList = extractDayOfWeekList(weekStart)
+export const CalendarDayOfWeek = React.memo(() => {
+	const dayOfWeekList = extractDayOfWeekList()
 
 	return (
 		<div className="calendar-day-week">
