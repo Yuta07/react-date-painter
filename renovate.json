@@ -1,0 +1,12 @@
+{
+  "extends": ["config:base", ":disableDependencyDashboard"],
+  "timezone": "Asia/Tokyo",
+  "labels": ["dependencies", "renovate"],
+  "packageRules": [
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    }
+  ]
+}
