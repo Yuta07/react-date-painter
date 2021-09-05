@@ -5,7 +5,6 @@ import dayjs from 'dayjs'
 import { CalendarBody } from './CalendarBody'
 import { CalendarDayOfWeek } from './CalendarDayOfWeek'
 import { CalendarHeader } from './CalendarHeader'
-import { updateWeekStart } from '../utils/calendarHelper'
 
 // base style
 import './index.css'
@@ -50,21 +49,16 @@ function painterReducer(state: PainterState, action: ActionType): PainterState {
 
 export interface ReactDatePainter {
 	format?: string
-	weekStart?: 's' | 'm'
 	selectedDates: Date[]
 	uniqueHoliday?: string[]
 	handleSelectDates?: (dates: Date[]) => void
 }
 
 export const DatePainter = forwardRef<HTMLDivElement, ReactDatePainter>(
-	({ format = 'MMMM YYYY', weekStart = 's', selectedDates, uniqueHoliday = [], handleSelectDates }, ref) => {
+	({ format = 'MMMM YYYY', selectedDates, uniqueHoliday = [], handleSelectDates }, ref) => {
 		const [currentMonth, setCurrentMonth] = useState<Date>(now)
 
 		const [state, dispatch] = useReducer(painterReducer, { selectedDates: selectedDates })
-
-		useEffect(() => {
-			updateWeekStart(weekStart)
-		}, [weekStart])
 
 		useEffect(() => {
 			handleSelectDates && handleSelectDates(state.selectedDates)
@@ -102,7 +96,7 @@ export const DatePainter = forwardRef<HTMLDivElement, ReactDatePainter>(
 					handlePreviousClick={handlePreviousClick}
 					handleNextClick={handleNextClick}
 				/>
-				<CalendarDayOfWeek weekStart={weekStart} />
+				<CalendarDayOfWeek />
 				<CalendarBody
 					currentMonth={currentMonth}
 					selectedDates={state.selectedDates}
