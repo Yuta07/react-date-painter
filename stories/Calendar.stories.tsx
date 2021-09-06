@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import './calendar.css'
 
-import { DatePainter, DatePainterPicker } from '../react-date-painter/src/components'
+import { DatePainter, DatePainterPicker } from '../react-date-painter/src'
 
 export default {
 	title: 'DatePainter',

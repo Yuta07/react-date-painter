@@ -1,11 +1,16 @@
 {
   "name": "react-date-painter",
   "version": "0.1.0",
-  "description": "The calendar date painter for React",
-  "main": "index.ts",
+  "description": "date paint picker for React",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
-  "private": true,
+  "repository": "git@github.com:Yuta07/react-date-painter.git",
+  "author": "yutaka.miyazaki <mono.12dev@gmail.com>",
   "dependencies": {
     "dayjs": "^1.10.6"
   },
@@ -17,21 +22,27 @@
     "@types/node": "^16.7.10",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
+    "postcss": "^8.3.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "rollup": "^2.56.3",
+    "rollup-plugin-dts": "^4.0.0",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "tslib": "^2.3.1",
     "typescript": "^4.4.2"
   },
-  "scripts": {},
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "peerDependencies": {
+    "react": "16.13.0 || ^17.0.2",
+    "react-dom": "16.13.0 || ^17.0.2"
+  },
+  "keywords": [
+    "react",
+    "date-picker"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && rollup -c",
+    "publish:public": "npm publish --access public"
   }
 }

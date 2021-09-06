@@ -1,6 +1,5 @@
 import React from 'react'
 import dayjs from 'dayjs'
-import Arrow from '../assets/arrow.svg'
 
 export interface CalendarHeaderProps {
 	format: string
@@ -15,10 +14,52 @@ export const CalendarHeader = React.memo(
 			<div className="calendar-header">
 				<div className="calendar-header-arrow">
 					<button className="arrow-button pre-button" onClick={handlePreviousClick}>
-						<img src={Arrow} alt="previous-button" className="previous-arrow" />
+						<svg
+							className="previous-arrow"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 64 64"
+							aria-labelledby="title"
+							aria-describedby="desc"
+							role="img"
+							xmlnsXlink="http://www.w3.org/1999/xlink"
+						>
+							<title>Angle Right</title>
+							<desc>A line styled icon from Orion Icon Library.</desc>
+							<path
+								data-name="layer1"
+								fill="none"
+								stroke="#666666"
+								strokeMiterlimit="10"
+								strokeWidth="4"
+								d="M26 20.006L40 32 26 44.006"
+								strokeLinejoin="round"
+								strokeLinecap="round"
+							></path>
+						</svg>
 					</button>
 					<button className="arrow-button next-button" onClick={handleNextClick}>
-						<img src={Arrow} alt="next-button" className="next-arrow" />
+						<svg
+							className="next-arrow"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 64 64"
+							aria-labelledby="title"
+							aria-describedby="desc"
+							role="img"
+							xmlnsXlink="http://www.w3.org/1999/xlink"
+						>
+							<title>Angle Right</title>
+							<desc>A line styled icon from Orion Icon Library.</desc>
+							<path
+								data-name="layer1"
+								fill="none"
+								stroke="#666666"
+								strokeMiterlimit="10"
+								strokeWidth="4"
+								d="M26 20.006L40 32 26 44.006"
+								strokeLinejoin="round"
+								strokeLinecap="round"
+							></path>
+						</svg>
 					</button>
 				</div>
 				<span className="current-month">{dayjs(currentMonth).format(format)}</span>
