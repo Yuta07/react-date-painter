@@ -18,15 +18,13 @@ const CalendarTemplate: ComponentStory<typeof DatePainter> = (args) => <DatePain
 const SelectedCalendarTemplate: ComponentStory<typeof DatePainter> = (args) => {
 	const [selectedDates, setSelectedDates] = useState(args.selectedDates)
 
-	const handleSelectDates = useCallback((dates: Date[]) => {
-		setSelectedDates(dates)
-	}, [])
-
 	return (
 		<DatePainter
 			selectedDates={selectedDates}
 			uniqueHoliday={args.uniqueHoliday}
-			handleSelectDates={handleSelectDates}
+			handleSelectDates={useCallback((dates: Date[]) => {
+				setSelectedDates(dates)
+			}, [])}
 		/>
 	)
 }

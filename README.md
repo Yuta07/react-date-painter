@@ -34,6 +34,26 @@ import { DatePainter, DatePainterPicker } from 'react-date-painter'
 </DatePainterPicker>
 ```
 
+## Example
+
+```tsx
+import { useState, useCallback } from 'react'
+import { DatePainter } from 'react-date-painter'
+
+const App = () => {
+  const [state, setState] = useState([])
+
+  return (
+    <DatePainter
+      selectedDates={state}
+      handleSelectDates={useCallback((dates: Date[]) => {
+        setSelectedDates(dates)
+      }, [])}
+    />
+  )
+}
+```
+
 ## Props
 
 | Name              | Required | Type                   | Default   | Description                                                                                                           |
