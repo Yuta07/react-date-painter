@@ -9,7 +9,6 @@
     "dist"
   ],
   "license": "MIT",
-  "repository": "git@github.com:Yuta07/react-date-painter.git",
   "author": "yutaka.miyazaki <mono.12dev@gmail.com>",
   "dependencies": {
     "dayjs": "^1.10.6"
@@ -44,5 +43,9 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "publish:public": "npm publish --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yuta07/react-date-painter"
   }
 }
