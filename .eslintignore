@@ -1,3 +1,4 @@
-../node_module/
-../build/
-../.yarn/
+node_modules/
+build/
+.yarn/
+dist/
