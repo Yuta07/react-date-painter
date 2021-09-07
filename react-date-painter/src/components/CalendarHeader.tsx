@@ -13,7 +13,7 @@ export const CalendarHeader = React.memo(
 		return (
 			<div className="calendar-header">
 				<div className="calendar-header-arrow">
-					<button className="arrow-button pre-button" onClick={handlePreviousClick}>
+					<button className="arrow-button pre-button" data-cy="previous-button" onClick={handlePreviousClick}>
 						<svg
 							className="previous-arrow"
 							xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ export const CalendarHeader = React.memo(
 							></path>
 						</svg>
 					</button>
-					<button className="arrow-button next-button" onClick={handleNextClick}>
+					<button className="arrow-button next-button" data-cy="next-button" onClick={handleNextClick}>
 						<svg
 							className="next-arrow"
 							xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,9 @@ export const CalendarHeader = React.memo(
 						</svg>
 					</button>
 				</div>
-				<span className="current-month">{dayjs(currentMonth).format(format)}</span>
+				<span className="current-month" data-cy="curernt-month">
+					{dayjs(currentMonth).format(format)}
+				</span>
 			</div>
 		)
 	}
