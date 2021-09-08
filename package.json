@@ -16,7 +16,7 @@
     "chromatic": "npx chromatic --project-token=206618650e15"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.4",
+    "@babel/core": "^7.15.5",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
@@ -28,6 +28,7 @@
     "@typescript-eslint/parser": "^4.29.3",
     "babel-loader": "^8.2.2",
     "chromatic": "^5.9.2",
+    "dayjs": "^1.10.6",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.1",
@@ -45,9 +46,7 @@
       "yarn prettier:fix"
     ]
   },
-  "dependencies": {
-    "dayjs": "^1.10.6"
-  },
+  "dependencies": {},
   "eslintConfig": {
     "overrides": [
       {

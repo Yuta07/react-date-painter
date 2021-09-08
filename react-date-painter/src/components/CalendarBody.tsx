@@ -36,12 +36,14 @@ export const CalendarBody = React.memo(
 						<p key={date.toString()} className="date-rect-pack">
 							<button
 								className="date-button"
+								data-cy="date-button"
 								onClick={() => (selected ? handleRemoveDatePainter(date) : handleSelectDatePainter(date))}
 							>
 								<span
 									className={`date-txt ${diffMonthClassName} ${saturdayClassName} ${sundayClassName} ${todayClassName} ${holidayClassName} ${
 										selected && 'selected'
 									}`}
+									data-cy="date"
 								>
 									{day}
 								</span>

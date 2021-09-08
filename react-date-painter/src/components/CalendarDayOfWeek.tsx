@@ -5,7 +5,7 @@ export const CalendarDayOfWeek = React.memo(() => {
 	const dayOfWeekList = extractDayOfWeekList()
 
 	return (
-		<div className="calendar-day-week">
+		<div className="calendar-day-week" data-cy="day-week">
 			{dayOfWeekList.map((day) => {
 				return (
 					<span key={day} className="day-week-txt">
