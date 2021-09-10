@@ -5,7 +5,6 @@ import '@testing-library/jest-dom'
 
 import { DatePainter } from '../src/index'
 import { extractDayOfWeekList } from '../src/utils/calendarHelper'
-import { createCurrentMonthCalendar } from '../src/utils/createCurrentMonthCalendar'
 
 afterEach(cleanup)
 
@@ -97,6 +96,15 @@ describe('ReactDatePainter', () => {
 			}
 
 			expect(screen.getByTestId('date-txt-8/9')).toHaveClass('holiday')
+		})
+	})
+
+	describe('selectedDate style test', () => {
+		test('test selectedDate like selected', () => {
+			const screen = render(<DatePainter selectedDates={[now.toDate()]} />)
+			const element = screen.getByTestId(`date-txt-${now.format('M/D')}`)
+
+			expect(element.classList.contains('selected')).toBe(true)
 		})
 	})
 })
