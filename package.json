@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "repository": "git@github.com:Yuta07/react-date-painter.git",
   "author": "yutaka.miyazaki <mono.12dev@gmail.com>",
+  "private": true,
+  "workspaces": [
+    "react-date-painter"
+  ],
   "license": "MIT",
   "scripts": {
     "lint": "eslint 'react-date-painter/**/*.{js,jsx,ts,tsx}'",
@@ -13,7 +17,9 @@
     "lint-staged": "lint-staged",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=206618650e15"
+    "chromatic": "npx chromatic --project-token=206618650e15",
+    "build": "yarn workspace react-date-painter run build",
+    "test": "yarn workspace react-date-painter run test"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
