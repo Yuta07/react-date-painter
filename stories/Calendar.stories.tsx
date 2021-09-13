@@ -69,6 +69,12 @@ OnlyCalendar.args = {
 	selectedDates: [],
 }
 
+export const JaDayOfWeekCalendar = CalendarTemplate.bind({})
+JaDayOfWeekCalendar.args = {
+	selectedDates: [],
+	dayOfWeekFormat: 'ja',
+}
+
 export const NoSelectedCalendar = CalendarTemplate.bind({})
 NoSelectedCalendar.args = {
 	selectedDates: [],
