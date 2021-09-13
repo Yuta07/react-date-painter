@@ -61,6 +61,7 @@ const App = () => {
 | format            | -        | Literal                | MMMM YYYY | Calendar Header format. You can select [day.js format](https://day.js.org/docs/en/display/format).                    |
 | selectedDates     | Yes      | Array                  | -         | The day you choose. Type is a Date Array.                                                                             |
 | uniqueHoliday     | -        | Array                  | []        | Your own holiday. Formats that can be added are 'YYYY-MM-DD'.                                                         |
+| dayOfWeekFormat   | -        | 'en' or 'ja'           | 'en'      | The day of week format. Default 'en'.                                                                                 |
 | targetId          | -        | string                 | -         | Only when using DatePainterPicker. Position to display datepicker. If there is no targetId, start from document.body. |
 | handleSelectDates | -        | (date: Date[]) => void | -         | This function fired when date is selected or reselected.                                                              |
 

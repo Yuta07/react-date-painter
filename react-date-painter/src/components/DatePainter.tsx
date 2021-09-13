@@ -51,11 +51,12 @@ export interface ReactDatePainter {
 	format?: string
 	selectedDates: Date[]
 	uniqueHoliday?: string[]
+	dayOfWeekFormat?: 'en' | 'ja'
 	handleSelectDates?: (dates: Date[]) => void
 }
 
 export const DatePainter = forwardRef<HTMLDivElement, ReactDatePainter>(
-	({ format = 'MMMM YYYY', selectedDates, uniqueHoliday = [], handleSelectDates }, ref) => {
+	({ format = 'MMMM YYYY', selectedDates, uniqueHoliday = [], dayOfWeekFormat = 'en', handleSelectDates }, ref) => {
 		const [currentMonth, setCurrentMonth] = useState<Date>(now)
 
 		const [state, dispatch] = useReducer(painterReducer, { selectedDates: selectedDates })
@@ -96,7 +97,7 @@ export const DatePainter = forwardRef<HTMLDivElement, ReactDatePainter>(
 					handlePreviousClick={handlePreviousClick}
 					handleNextClick={handleNextClick}
 				/>
-				<CalendarDayOfWeek />
+				<CalendarDayOfWeek dayOfWeekFormat={dayOfWeekFormat} />
 				<CalendarBody
 					currentMonth={currentMonth}
 					selectedDates={state.selectedDates}

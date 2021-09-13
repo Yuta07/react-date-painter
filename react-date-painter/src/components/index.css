@@ -63,11 +63,12 @@
 	width: 100%;
 	margin-top: 20px;
 	display: flex;
-	justify-content: space-around;
 }
 
 .day-week-txt {
+	width: calc(100% / 7);
 	color: #a1a1a1;
+	text-align: center;
 }
 
 /* calendar body */

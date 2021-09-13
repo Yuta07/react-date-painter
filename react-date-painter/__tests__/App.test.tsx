@@ -43,13 +43,25 @@ describe('ReactDatePainter', () => {
 	})
 
 	describe('calendar week of day test', () => {
-		test('test day of week display', () => {
-			const expectedDayOfWeek = ['日', '月', '火', '水', '木', '金', '土']
+		test('test en day of week display', () => {
+			const expectedDayOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-			const element = extractDayOfWeekList()
+			const element = extractDayOfWeekList('en')
 			expect(element).toEqual(expect.arrayContaining(expectedDayOfWeek))
 
-			const screen = render(<DatePainter selectedDates={[]} />)
+			const screen = render(<DatePainter selectedDates={[]} dayOfWeekFormat="en" />)
+			expect(screen.getByTestId('day-week-0')).toHaveTextContent('Sun')
+			expect(screen.getByTestId('day-week-3')).toHaveTextContent('Wed')
+			expect(screen.getByTestId('day-week-6')).toHaveTextContent('Sat')
+		})
+
+		test('test ja day of week display', () => {
+			const expectedDayOfWeek = ['日', '月', '火', '水', '木', '金', '土']
+
+			const element = extractDayOfWeekList('ja')
+			expect(element).toEqual(expect.arrayContaining(expectedDayOfWeek))
+
+			const screen = render(<DatePainter selectedDates={[]} dayOfWeekFormat="ja" />)
 			expect(screen.getByTestId('day-week-0')).toHaveTextContent('日')
 			expect(screen.getByTestId('day-week-3')).toHaveTextContent('水')
 			expect(screen.getByTestId('day-week-6')).toHaveTextContent('土')
